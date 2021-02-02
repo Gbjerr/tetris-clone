@@ -2,14 +2,15 @@ package view;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import model.*;
+import resources.*;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Random;
 
+/**
+ * Class represents the Canvas where the game is displayed, and that which
+ * appears on it.
+ */
 public class GameDisplay extends Canvas {
 
     final int WIDTH = 300;
@@ -17,6 +18,9 @@ public class GameDisplay extends Canvas {
 
     GraphicsContext gc;
 
+    /**
+     * constructor
+     */
     public GameDisplay() {
 
         setWidth(WIDTH);
@@ -25,19 +29,29 @@ public class GameDisplay extends Canvas {
 
     }
 
-    public void paintFigure(Figure figure) {
-        gc.setFill(figure.getColor());
-        for(Point p : figure.getCoordinates()) {
+    /**
+     * Given a shape, paints it on the GraphicsContext
+     * @param shape - The shape to display
+     */
+    public void paintshape(Shape shape) {
+        gc.setFill(shape.getColor());
+        for(Point p : shape.getCoordinates()) {
             gc.fillRect((int) p.x * 30, (int) p.y * 30, 30, 30);
         }
     }
 
-    public void update(Figure figure, boolean[][] field) {
+    /**
+     *
+     * @param shape
+     * @param field
+     */
+    public void update(Shape shape, boolean[][] field) {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, WIDTH, HEIGHT);
 
         gc.setFill(Color.GREEN);
 
+        // nested loop paints the blocks on the bottom
         for(int x = 0; x < field.length; x++) {
 
             for(int y = 0; y < field[0].length; y++) {
@@ -49,7 +63,7 @@ public class GameDisplay extends Canvas {
 
         }
 
-        paintFigure(figure);
+        paintshape(shape);
 
 
         gc.setStroke(Color.BLACK);
@@ -63,51 +77,4 @@ public class GameDisplay extends Canvas {
             gc.strokeLine(0, i*30, WIDTH, i*30);
         }
     }
-    /*
-
-    public void handleControls(KeyCode code) {
-
-        if(code.equals(KeyCode.LEFT)) {
-
-            for(Point p : figure.getCoordinates()) {
-                if(p.x < 1) {
-                    System.out.println("out of bounds!");
-                    return;
-                }
-            }
-
-            if(checkOverLapLeft(figure.getCoordinates())) return;
-            figure.decrement(1, 0);
-
-        } else if(code.equals(KeyCode.RIGHT)) {
-
-            for(Point p : figure.getCoordinates()) {
-                if(p.x > 8) {
-                    System.out.println("out of bounds!");
-                    return;
-                }
-            }
-
-            if(checkOverLapRight(figure.getCoordinates())) return;
-            figure.increment(1, 0);
-        } else if(code.equals(KeyCode.UP)) {
-
-            ArrayList<Point> list = figure.getNextRotation();
-
-            for (Point p : list) {
-                if (p.x < 1 || p.x > 8) {
-                    System.out.println("out of bounds!");
-                    return;
-                }
-            }
-
-            if (!checkCollision(list)) {
-                figure.rotate();
-            }
-
-
-        }
-    }
-
-     */
 }

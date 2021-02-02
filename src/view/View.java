@@ -5,12 +5,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+/**
+ * Class represents the View which contains all that is going to be displayed
+ * on the GUI
+ */
 public class View extends Pane {
     public GameDisplay gameDisplay;
-    public FigureDisplay figureDisplay;
+    public shapeDisplay shapeDisplay;
     public Text score;
     public Text nextFigure;
 
+    /**
+     * constructor
+     */
     public View() {
 
         setPrefSize(475, 630);
@@ -22,6 +29,7 @@ public class View extends Pane {
         box.setFill(Color.WHITE);
 
         score = new Text("Score: \n0");
+        // css stylings
         score.setStyle("-fx-fill: white;" +
                        "-fx-alignment: center;" +
                         "-fx-font-family: Orbitron;" +
@@ -30,6 +38,7 @@ public class View extends Pane {
         score.setLayoutY(100);
 
         nextFigure = new Text("Next figure: ");
+        // css stylings
         nextFigure.setStyle("-fx-fill: white;" +
                 "-fx-alignment: center;" +
                 "-fx-font-family: Orbitron;" +
@@ -41,11 +50,11 @@ public class View extends Pane {
         gameDisplay.setLayoutX(15);
         gameDisplay.setLayoutY(15);
 
-        figureDisplay = new FigureDisplay();
-        figureDisplay.setLayoutX(330);
-        figureDisplay.setLayoutY(340);
+        shapeDisplay = new shapeDisplay();
+        shapeDisplay.setLayoutX(330);
+        shapeDisplay.setLayoutY(340);
 
-        getChildren().addAll(score, nextFigure, box, gameDisplay, figureDisplay);
+        getChildren().addAll(score, nextFigure, box, gameDisplay, shapeDisplay);
     }
 
 }
