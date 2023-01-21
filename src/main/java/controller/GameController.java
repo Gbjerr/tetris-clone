@@ -159,6 +159,13 @@ public class GameController {
         at.start();
     }
 
+    /**
+     * Calculates earned points based on current level and number of lines cleared.
+     *
+     * @param numClearedLines number of cleared lines
+     * @param level current level
+     * @return amount of points earned
+     */
     private int calculatePoints(int numClearedLines, int level) {
         int points = 0;
         switch (numClearedLines) {
@@ -178,6 +185,9 @@ public class GameController {
         return points;
     }
 
+    /**
+     * Method handles listeners for user input.
+     */
     private void initListeners() {
         // initialize listener for start button
         view.getStartButton().setOnAction(new EventHandler<ActionEvent>() {

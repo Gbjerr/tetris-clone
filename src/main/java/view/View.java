@@ -19,12 +19,10 @@ public class View extends Pane {
     private final Text level;
     private final Text gameOver;
     private final static Font RETRO = Font.loadFont(View.class.getResourceAsStream("/fonts/Retro_Gaming.ttf"), 120);
-
     private final Button startButton;
 
-
     /**
-     * constructor
+     * Initialize all GUI elements here.
      */
     public View() {
 
@@ -106,25 +104,6 @@ public class View extends Pane {
         getChildren().addAll(startButton, score, level, nextFigure, gameOver, box, gameDisplay, shapeDisplay);
     }
 
-    public void updateShapeDisplay(Point[] points, Color color) {
-        shapeDisplay.update(points, color);
-    }
-
-    public void updateGameDisplay(Point[] points, Color color, boolean[][] field) {
-        gameDisplay.update(points, color, field);
-    }
-
-    public void resetScore() {
-        score.setText("Score: \n0");
-    }
-
-    public void updateLevel(int level) {
-        this.level.setText("Level: \n" + level);
-    }
-
-    public void updateScore(int score) {
-        this.score.setText("Score: \n" + score);
-    }
     public Button getStartButton() {
         return startButton;
     }
@@ -137,7 +116,28 @@ public class View extends Pane {
             gameOver.setText("");
         }
     }
+
+    public void updateShapeDisplay(Point[] points, Color color) {
+        shapeDisplay.update(points, color);
+    }
+
+    public void updateGameDisplay(Point[] points, Color color, boolean[][] field) {
+        gameDisplay.update(points, color, field);
+    }
+
+    public void updateLevel(int level) {
+        this.level.setText("Level: \n" + level);
+    }
+
+    public void updateScore(int score) {
+        this.score.setText("Score: \n" + score);
+    }
+
     public void resetLevel() {
         level.setText("Level: \n1");
+    }
+
+    public void resetScore() {
+        score.setText("Score: \n0");
     }
 }

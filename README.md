@@ -11,7 +11,7 @@ The Start button is used to initialize the game, but also used to start over whe
 </ul>
 
 ## Usage
-Requires java JDK 16. <br>
+Requires java 16. <br>
 Run with maven: <b>mvn clean javafx:run</b>
 
 ## Screenshot

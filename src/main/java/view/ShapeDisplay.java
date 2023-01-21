@@ -10,7 +10,6 @@ import javafx.scene.paint.Color;
  * Class that represents a display, where the next figure is represented in
  * the tetris game
  */
-
 public class ShapeDisplay extends Canvas {
     private final int WIDTH;
     private final int HEIGHT;
